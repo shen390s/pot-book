@@ -1,0 +1,15 @@
+:doctype: book
+
+image::docs.adoc/pot-red.svg[pot logo]
+
+== Welcome to the `pot` documentation
+
+Welcome! This is the documentation of `pot`, an open source jail framework/manager for FreeBSD.
+It's designed to support multiple jail usage, from VM emulation to small container model.
+
+A good place to start, is the xref:Getting.adoc[Getting started guide] or the xref:Installation.adoc[Installation Guide]. +
+`pot` can be used to manage xref:Thin.adoc[Thin jails], xref:Thick.adoc[Thick jails] or xref:Container.adoc[Containers]. +
+There are also detailed sections about xref:Network.adoc[Network configuration of a `pot`] and xref:Images.adoc[Pot images].
+
+A FAQ section is in development and available xref:FAQ.adoc[here]
+Soon, you'll find additional sections about `potMachine`, to allow you to use `pot` on different operating systems, and `minipot`, a one-node based service mesh that allow you to play with `nomad`

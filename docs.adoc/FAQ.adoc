@@ -1,0 +1,5 @@
+== Frequently Asked Questions
+
+If you have a question that is not listed here, you can submit an issue to the documentation https://github.com/pizzamig/pot-book[Github repo]
+
+* Is it possible to mount a folder or a ZFS dataset in a `pot`? xref:Volumes.adoc[Yes]

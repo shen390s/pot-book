@@ -1,0 +1,51 @@
+#! /bin/sh
+
+_booktop="$1"
+_bookinfo="mkdocs.yml"
+_title="Pot Book"
+_content_dir="$_booktop/docs.adoc"
+
+get_author() {
+  cat $_booktop/$_bookinfo |grep '^site_author:' |awk -F: '{print $2}'
+}
+
+get_desc() {
+  cat $_booktop/$_bookinfo | grep '^site_description:' | awk -F: '{print $2}'
+}
+
+get_chapters() {
+    cat $_booktop/$_bookinfo \
+	| sed -n '/^nav:/,/^[ \t]*$/p' \
+	| awk -F: '{ print $2 }' \
+	| sed -e '/^[ \t]*$/d' \
+	| sed -e '1,$s/\.md$/\.adoc/g' \
+	| xargs echo 
+}
+
+gen_book() {
+  _author=`get_author`
+  _desc=`get_desc`
+  _chapters=`get_chapters`
+  
+  echo "= $_title"
+  echo "$_author"
+  echo ":description: $_desc"
+  echo ":toc:"
+  echo ":icons: font"
+
+  for ch in $_chapters; do
+      echo
+      echo "<<<"
+      echo "include::docs.adoc/$ch[]"
+      echo
+  done
+}
+
+# Using kramdoc doc1.md -o doc1.adoc
+# to convert markdown document to asciidoctor document
+#
+gen_book >potbook.adoc
+
+asciidoctor-pdf potbook.adoc
+
+
