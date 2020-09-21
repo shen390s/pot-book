@@ -30,8 +30,11 @@ gen_book() {
   echo "= $_title"
   echo "$_author"
   echo ":description: $_desc"
-  echo ":toc:"
-  echo ":icons: font"
+  cat <<EOF
+:toc:
+:icons: font
+:title-page:
+EOF
 
   for ch in $_chapters; do
       echo
